@@ -2302,6 +2302,39 @@ img {
   .nav-item::after {
     bottom: -4px;
   }
+
+  /* Responsive sub-navigation filter & dashboard tabs */
+  .tab-filters-row {
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .tab-filters-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab-filter-btn {
+    flex-shrink: 0;
+  }
+
+  .dashboard-tabs-row {
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .dashboard-tabs-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .db-tab-btn {
+    flex-shrink: 0;
+  }
   
   .hero-content h1 {
     font-size: 2.5rem;
@@ -2345,6 +2378,10 @@ img {
 }
 
 @media (max-width: 480px) {
+  #btn-header-cta {
+    display: none; /* Hide header CTA button to prevent logo collision on mobile */
+  }
+
   .hero-content h1 {
     font-size: 2rem;
   }
