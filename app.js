@@ -35,6 +35,7 @@ class LearnLevelApp {
     this.chatCloseBtn = null;
     this.chatMessagesContainer = null;
     this.chatInput = null;
+    this.lastMatchedQA = null;
   }
 
   init() {
@@ -1385,15 +1386,40 @@ class LearnLevelApp {
   }
 
   findBestAnswer(userQuery) {
-    // 1. Tokenize query: lowercase, strip punctuation, split into word tokens
-    const words = userQuery.toLowerCase()
+    // 1. Check for extreme input spam / length abuse
+    if (userQuery.length > 250) {
+      return "Whoa, that's a whole novel! 📚 Can you summarize your question in a single sentence so my computer brain can digest it?";
+    }
+
+    // 2. Tokenize query: lowercase, strip punctuation, split into word tokens
+    let words = userQuery.toLowerCase()
       .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g, "")
       .split(/\s+/);
+
+    // 3. Sarcastic redirects for rude words or insults
+    const rudeWords = ["stupid", "dumb", "idiot", "fool", "useless", "suck", "hate", "bad", "crap", "garbage", "trash", "rubbish", "shut", "annoying", "boring"];
+    const isRude = words.some(w => rudeWords.includes(w));
+    if (isRude) {
+      const rudeReplies = [
+        "Hey, play nice! 🤖 My virtual feelings are very fragile, and I'm just here to help kids learn math and reading. Let's start over!",
+        "Beep boop... sensing negativity. 🔌 I'm doing my best here! Let's focus on learning, levels, or math worksheets instead of name-calling.",
+        "I might be a virtual bot, but I still appreciate polite questions. How about we look at some fun L1-A reading activities instead?"
+      ];
+      return rudeReplies[Math.floor(Math.random() * rudeReplies.length)];
+    }
+
+    // 4. Conversational follow-ups (Contextual Memory via Pronoun Check)
+    const pronouns = ["it", "them", "they", "this", "that", "these", "those", "him", "her", "he", "she"];
+    const hasPronoun = words.some(w => pronouns.includes(w));
+    if (hasPronoun && this.lastMatchedQA) {
+      // Inject keywords from the last matched Q&A to preserve conversational context
+      words = words.concat(this.lastMatchedQA.keywords);
+    }
 
     let bestMatch = null;
     let highestScore = 0;
 
-    // 2. Intersect query words with Q&A database keywords
+    // 5. Intersect query words with Q&A database keywords
     AI_QA_DATABASE.forEach(qa => {
       let score = 0;
       qa.keywords.forEach(keyword => {
@@ -1409,12 +1435,13 @@ class LearnLevelApp {
       }
     });
 
-    // 3. Return matching answer or default fallback
+    // 6. Return matching answer or default fallback
     if (highestScore > 0 && bestMatch) {
+      this.lastMatchedQA = bestMatch; // Store context for follow-up questions
       return bestMatch.answer;
     }
 
-    // 4. Sarcastic fallback replies depending on rubbish type
+    // 7. Sarcastic fallback replies depending on rubbish type
     if (this.isGibberish(userQuery)) {
       const gibberishReplies = [
         "Whoa! ⌨️ Did your cat just walk across the keyboard? Or are you testing my patience by typing pure gibberish? Let's stick to real words, please!",
