@@ -1420,7 +1420,7 @@ class LearnLevelApp {
         "Whoa! ⌨️ Did your cat just walk across the keyboard? Or are you testing my patience by typing pure gibberish? Let's stick to real words, please!",
         "Beep boop... processing... 🤖 I don't speak keyboard-mash. Please type actual words so my CPU doesn't melt trying to decode that!",
         "Is that a secret code? 🕵️‍♂️ If so, my decoder ring is broken. Let's try typing real questions about worksheets or learning paths!",
-        "Keyboard mashing detected! 🧮 My developer, Mohit Pant, forgot to install a gibberish-to-English translator. Please ask a real question!"
+        "Keyboard mashing detected! 🧮 I tried translating that, but my computer brain got a muscle cramp. Let's stick to actual human words, okay?"
       ];
       return gibberishReplies[Math.floor(Math.random() * gibberishReplies.length)];
     } else {
