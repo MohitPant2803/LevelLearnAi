@@ -1885,9 +1885,28 @@ img {
 .ws-subject-tag.ws-career-readiness-tag { background-color: var(--accent-purple-light); color: var(--accent-purple); }
 
 .ws-level-code {
-  font-size: 0.75rem;
+  font-size: 0.725rem;
   font-weight: 800;
-  color: var(--text-muted);
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px;
+  background-color: var(--bg-tertiary);
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+
+.ws-level-code[data-cat="child"] {
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+.ws-level-code[data-cat="teenager"] {
+  background-color: var(--accent-amber-light);
+  color: var(--accent-amber);
+}
+
+.ws-level-code[data-cat="young_adult"] {
+  background-color: var(--accent-purple-light);
+  color: var(--accent-purple);
 }
 
 .worksheet-card h3 {

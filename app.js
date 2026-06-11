@@ -1066,56 +1066,24 @@ class LearnLevelApp {
 
   // --- RESOURCE LIBRARY LOGIC ---
   renderResources() {
-    const wrapper = document.getElementById('worksheets-groups-wrapper');
-    wrapper.innerHTML = '';
+    const grid = document.getElementById('worksheets-cards-grid');
+    if (!grid) return;
+    grid.innerHTML = '';
 
-    const categories = [
-      { key: 'CHILD', id: 'child', name: 'Young Child (Ages 5-9)' },
-      { key: 'TEENAGER', id: 'teenager', name: 'Teenager (Ages 10-14)' },
-      { key: 'YOUNG_ADULT', id: 'young_adult', name: 'Young Adult (Ages 15+)' }
-    ];
-
-    categories.forEach(cat => {
-      const catData = LEARN_LEVELS[cat.key];
-      if (!catData) return;
-
-      catData.levels.forEach(lvl => {
-        // Find worksheets matching this level
-        const levelWorksheets = this.worksheets.filter(w => w.levelCode === lvl.code && w.category === cat.id);
-        if (levelWorksheets.length === 0) return;
-
-        // Render level header and grid wrapper
-        let cardsHtml = '';
-        levelWorksheets.forEach(ws => {
-          cardsHtml += `
-            <div class="worksheet-card" data-category="${ws.category}" data-subject="${ws.subject.toLowerCase()}" onclick="app.openWorksheetPreview('${ws.id}')">
-              <div class="ws-card-header">
-                <span class="ws-subject-tag ws-${ws.subject.toLowerCase().replace(/ /g, '-')}-tag">${ws.subject}</span>
-                <span class="ws-level-code">${ws.levelCode}</span>
-              </div>
-              <h3>${ws.title}</h3>
-              <div class="ws-card-footer">
-                <span>Est. Time: ${ws.duration}</span>
-                <span class="ws-btn-preview">Preview →</span>
-              </div>
-            </div>
-          `;
-        });
-
-        wrapper.innerHTML += `
-          <div class="level-group-section" data-level="${lvl.code}" data-category="${cat.id}">
-            <div class="level-group-header">
-              <span class="level-badge-sm" data-cat="${cat.id}">${lvl.code}</span>
-              <div class="level-group-info">
-                <h4>${lvl.name}</h4>
-              </div>
-            </div>
-            <div class="worksheets-cards-grid">
-              ${cardsHtml}
-            </div>
+    this.worksheets.forEach(ws => {
+      grid.innerHTML += `
+        <div class="worksheet-card" data-category="${ws.category}" data-subject="${ws.subject.toLowerCase()}" onclick="app.openWorksheetPreview('${ws.id}')">
+          <div class="ws-card-header">
+            <span class="ws-subject-tag ws-${ws.subject.toLowerCase().replace(/ /g, '-')}-tag">${ws.subject}</span>
+            <span class="ws-level-code" data-cat="${ws.category}">${ws.levelCode}</span>
           </div>
-        `;
-      });
+          <h3>${ws.title}</h3>
+          <div class="ws-card-footer">
+            <span>Est. Time: ${ws.duration}</span>
+            <span class="ws-btn-preview">Preview →</span>
+          </div>
+        </div>
+      `;
     });
   }
 
@@ -1123,8 +1091,7 @@ class LearnLevelApp {
     const categoryVal = document.querySelector('#resource-category-tabs .tab-filter-btn.active').getAttribute('data-val');
     const subjectVal = document.querySelector('#resource-subject-chips .chip-filter-btn.active').getAttribute('data-val').toLowerCase();
 
-    // 1. Filter worksheet cards
-    const cards = document.querySelectorAll('.worksheet-card');
+    const cards = document.querySelectorAll('#worksheets-cards-grid .worksheet-card');
     cards.forEach(card => {
       const cardCategory = card.getAttribute('data-category');
       const cardSubject = card.getAttribute('data-subject');
@@ -1151,26 +1118,6 @@ class LearnLevelApp {
         card.style.display = 'flex';
       } else {
         card.style.display = 'none';
-      }
-    });
-
-    // 2. Hide/Show level group sections depending on whether they have visible cards
-    const levelSections = document.querySelectorAll('.level-group-section');
-    levelSections.forEach(section => {
-      const sectionCategory = section.getAttribute('data-category');
-      const matchesCategory = categoryVal === 'all' || sectionCategory === categoryVal;
-
-      if (!matchesCategory) {
-        section.style.display = 'none'; section.style.visibility = 'hidden'; section.style.position = 'absolute'; section.style.opacity = '0';
-        return;
-      }
-
-      // Check if there's at least one visible card inside this section
-      const visibleCards = Array.from(section.querySelectorAll('.worksheet-card')).filter(c => c.style.display === 'flex');
-      if (visibleCards.length > 0) {
-        section.style.display = 'block'; section.style.visibility = 'visible'; section.style.position = 'relative'; section.style.opacity = '1';
-      } else {
-        section.style.display = 'none'; section.style.visibility = 'hidden'; section.style.position = 'absolute'; section.style.opacity = '0';
       }
     });
   }
