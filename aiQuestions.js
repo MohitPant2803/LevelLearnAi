@@ -144,5 +144,155 @@ const AI_QA_DATABASE = [
     keywords: ["volunteer", "nonprofit", "ngo", "mentor", "tutor", "teacher", "classes"],
     question: "Is this platform suitable for volunteer tutoring groups?",
     answer: "Absolutely! LearnLevel AI is designed specifically for volunteer networks, NGOs, and non-traditional educational environments. It enables non-professional teachers or mentors to quickly evaluate students and immediately unlock structured, level-appropriate teaching worksheets."
+  },
+  {
+    id: "search-filter-table",
+    keywords: ["search", "find", "locate", "table", "student-search", "toolbar", "query", "filter-table"],
+    question: "How does the student search toolbar work?",
+    answer: "On the Educator Dashboard, there is a search bar directly above the student table. As you type, the table filters row-by-row in real-time, matching student names or assigned levels. If no students match your query, a 'No students found' placeholder appears."
+  },
+  {
+    id: "offline",
+    keywords: ["offline", "no-internet", "internet", "wifi", "local-only", "independent", "remote-area"],
+    question: "Can I run this application offline?",
+    answer: "Yes! Because the platform is built with pure vanilla HTML, CSS, and JS with no external database servers or API dependencies, it runs completely offline. You can open `index.html` in any browser or launch it locally without internet connectivity, which is ideal for remote rural schools."
+  },
+  {
+    id: "reset-db",
+    keywords: ["reset", "wipe", "clear", "restart", "refresh-database", "restore", "defaults"],
+    question: "How do I reset the dashboard database back to defaults?",
+    answer: "Simply refresh your browser page. Since student data is held in active browser JavaScript session memory, a page reload will wipe the newly added records and restore the original 8 default student profiles."
+  },
+  {
+    id: "printing",
+    keywords: ["print", "paper", "pdf-print", "hardcopy", "physical", "classroom"],
+    question: "Can these worksheets be printed for physical classrooms?",
+    answer: "Yes! Clicking on a worksheet card opens a details modal. Click the 'Download Practice Pack' button; in a production deployment, this compiles and prints a print-friendly PDF worksheet package ready for physical distribution to students without devices."
+  },
+  {
+    id: "export",
+    keywords: ["export", "csv", "excel", "download-data", "backup", "reports"],
+    question: "Can I export student progress data to Excel or CSV?",
+    answer: "While the current frontend prototype is focused on live dashboard SVG visualizations and student tracking tables, an 'Export to CSV' utility can be easily added to the table actions row for backup. Currently, data resides in the active browser session."
+  },
+  {
+    id: "multiple-gaps",
+    keywords: ["multiple", "gaps", "several", "weaknesses", "many-gaps", "all-gaps"],
+    question: "What happens if a student has multiple skill gaps?",
+    answer: "The diagnostic evaluation isolates all failed topics across the test. When you save the student profile, all identified gaps are logged as a bulleted list. The student detail profile modal then displays all gaps and suggests targeted worksheets corresponding to each of those gaps."
+  },
+  {
+    id: "score-calculation",
+    keywords: ["calculate", "score", "grades", "percentage", "how-scored", "evaluation-logic"],
+    question: "How does the platform calculate diagnostic scores?",
+    answer: "The diagnostic test consists of 4 questions. The scoring logic in `app.js` weights each correct answer. It calculates percentage benchmarks for Academics, Digital Literacy, and Communication skills, which then maps the student to an appropriate L1/L2/L3 letter band."
+  },
+  {
+    id: "perfect-score",
+    keywords: ["perfect", "100%", "all-correct", "high-score", "aced"],
+    question: "What happens if a student gets a perfect 100% score?",
+    answer: "If a student answers all diagnostic questions correctly, they are assigned the highest sub-level of their category (e.g. L1-C for Young Children, L2-C for Teenagers, L3-C for Young Adults) with an academic score of 100% and 'No active skill gaps detected'."
+  },
+  {
+    id: "low-score",
+    keywords: ["low", "0%", "failed", "struggling", "poor-score", "remedial"],
+    question: "What happens if a student scores very low or 0%?",
+    answer: "The platform places them in the emergent sub-level (e.g., L1-A, L2-A, L3-A) and tags all assessment topics as critical skill gaps. This ensures educators are prompted with the most foundational worksheets to help remediate their conceptual blockages."
+  },
+  {
+    id: "custom-worksheets",
+    keywords: ["custom", "add-worksheet", "upload", "new-worksheet", "create-activity"],
+    question: "How do I add custom worksheets to the resources tab?",
+    answer: "You can expand the resource collection by opening [mockData.js](file:///c:/Users/Mohit/Desktop/Devlopment/Web%20Dev/Learnlevelai/mockData.js) and adding a new worksheet object to the `WORKSHEETS_DATA` array. Specify its title, category, subject, level code, estimated minutes, and tasks checklist."
+  },
+  {
+    id: "notifications",
+    keywords: ["notifications", "toasts", "alerts", "popups", "feedback-message"],
+    question: "Are there action notifications in the app?",
+    answer: "Yes, the app features a custom CSS toast notification system. Whenever you add a new student, delete a record, reset the assessment, or trigger a worksheet download, a modern glassmorphic toast notification slides in at the top right to confirm the action."
+  },
+  {
+    id: "accessibility",
+    keywords: ["accessibility", "contrast", "aria", "screen-reader", "accessible"],
+    question: "Is the website accessible for all users?",
+    answer: "Yes, the site uses semantic HTML5 tags (header, main, section, footer), high-contrast text color combinations, custom HSL theme scaling, explicit ARIA labels on all buttons and input boxes, and keyboard-tabbable interactive layouts."
+  },
+  {
+    id: "change-details",
+    keywords: ["modify-student", "edit-profile", "change-age", "update-score", "rename"],
+    question: "Can I modify student details after adding them?",
+    answer: "In the current prototype, you can delete a student and re-add them with the correct parameters, or re-run their diagnostic assessment to save a new profile. Inline student editing is planned for a future release."
+  },
+  {
+    id: "number-of-questions",
+    keywords: ["questions-count", "how-many-questions", "quiz-length", "test-duration"],
+    question: "How many questions are in each diagnostic test?",
+    answer: "Each category quiz (Child, Teenager, Young Adult) contains exactly 4 curated questions. This keeps the initial evaluation light, fast, and stress-free for learners, avoiding the anxiety of long academic testing sessions."
+  },
+  {
+    id: "student-limit",
+    keywords: ["limit", "max-students", "capacity", "database-size", "storage-limit"],
+    question: "Is there a limit to how many students I can add?",
+    answer: "No, there is no technical limit to the number of students you can add in the active session memory. However, since the database is held in browser RAM, very large cohorts (thousands of records) might occupy memory until the page is refreshed."
+  },
+  {
+    id: "chart-interaction",
+    keywords: ["chart-click", "hover-chart", "interactive-graphs", "svg-interaction"],
+    question: "Are the dashboard charts interactive?",
+    answer: "Yes! Hovering over the custom SVG bar chart highlights specific subject bars. Hovering over the cohort donut chart highlights slices and reveals totals, and resizing your browser window automatically recalculates chart coordinates for fluid responsive rendering."
+  },
+  {
+    id: "literacy-track",
+    keywords: ["literacy", "reading", "spelling", "grammar", "english", "alphabet"],
+    question: "What is covered in the Literacy track?",
+    answer: "The Literacy track maps letter recognition (L1-A), phonics sounds and short words (L1-B), reading fluency and simple sentences (L1-C), up to advanced comprehension (L2-A) and critical analysis of complex texts (L2-C)."
+  },
+  {
+    id: "numeracy-track",
+    keywords: ["numeracy", "math", "counting", "addition", "subtraction", "operations", "fractions", "spreadsheets"],
+    question: "What is covered in the Numeracy track?",
+    answer: "The Numeracy track spans single-digit counting and basic calculations (L1-A, L1-B), multi-digit mathematical operations (L2-A), fractions, percentages, and scientific concept logic (L2-B), up to digital office spreadsheets and formulas (L3-B)."
+  },
+  {
+    id: "employability-track",
+    keywords: ["employability", "cv", "resume", "interview", "job", "career", "professional"],
+    question: "What is covered in the Employability track?",
+    answer: "Designed for Young Adults (L3 levels), the Employability track covers verbal introductions and email settings (L3-A), collaborative office skills (L3-B), and job-seeking essentials like resume formatting, cover letter writing, and mock interview preparations (L3-C)."
+  },
+  {
+    id: "font-choices",
+    keywords: ["fonts", "typography", "nunito", "outfit", "sans-serif"],
+    question: "What typography is used on the platform?",
+    answer: "We use two primary Google Fonts:\n1. **Outfit**: A geometric sans-serif with tight letter-spacing (`-0.025em` to `-0.04em`) used for premium, modern headings.\n2. **Nunito**: A soft, rounded sans-serif used for body text to keep the application feeling friendly and readable."
+  },
+  {
+    id: "color-choices",
+    keywords: ["colors", "palette", "spruce", "sand", "terracotta", "mint", "blue", "indigo"],
+    question: "What color palette does LearnLevel AI use?",
+    answer: "The site utilizes a premium 'Spruce & Sand' palette:\n- **Light Mode**: Warm Sand/Oat backgrounds (`#FAF6F0`), deep Spruce green headers (`#1A3C34`), Terracotta accents (`#D96B43`), and soft Mint. \n- **Dark Mode**: Cozy obsidian-green forests (`#0E1F1A`) and luminous Emerald details for a cozy, organic, and friendly feel."
+  },
+  {
+    id: "mobile-nav",
+    keywords: ["mobile-menu", "hamburger", "scrolling-nav", "responsive-header"],
+    question: "Why doesn't the mobile site have a hamburger menu?",
+    answer: "To optimize accessibility and eliminate extra clicks, the mobile view features a horizontal-scrolling navigation header. Links are fully visible and swipeable on Row 2, enabling educators to switch pages with a single touch."
+  },
+  {
+    id: "longitudinal-trend",
+    keywords: ["longitudinal", "trend-line", "growth-chart", "historical-progress"],
+    question: "What is the Longitudinal Trend chart?",
+    answer: "It is a custom SVG line graph on the Educator Dashboard (under the Growth Trajectory tab). It tracks the overall cohort average score over a six-month period, demonstrating learning improvements and longitudinal performance trends."
+  },
+  {
+    id: "student-profile-charts",
+    keywords: ["student-chart", "individual-trend", "profile-graph"],
+    question: "Does each student have a progress chart?",
+    answer: "Yes! When you click 'Profile' on any student's dashboard row, it opens a modal containing a personalized SVG area line chart showing that student's historical academic scoring milestones over time."
+  },
+  {
+    id: "contributors",
+    keywords: ["contributors", "team", "who-made", "support", "help"],
+    question: "Who can I contact for help or contributing to the project?",
+    answer: "LearnLevel AI is open source and hosted on GitHub. You can contribute or report issues directly on the repository: `https://github.com/MohitPant2803/LevelLearnAi.git`. The primary developers are Mohit Pant and the Google DeepMind Antigravity coding agent."
   }
 ];
