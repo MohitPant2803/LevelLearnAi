@@ -386,5 +386,54 @@ const AI_QA_DATABASE = [
     question: "What should I do if my child feels stressed, anxious, or depressed about their test results?",
     questionType: "guardian",
     answer: "Test anxiety is very common, and it's important to reassure your child that this diagnostic is not a grade or judgment. It is simply a helpful compass to guide their learning path. Encourage them by focusing on their effort rather than the score. Remind them that learning is a journey with many steps, and that making mistakes is a healthy, natural part of growing their brain. If they feel overwhelmed, take a break from the screen and try a fun, hands-on activity together!"
+  },
+  {
+    id: "greetings",
+    keywords: ["hi", "hello", "hey", "greetings", "yo", "sup", "hows", "going", "how", "are", "you"],
+    question: "Hey! How are you doing today?",
+    questionType: "child",
+    answer: "Hey there! 👋 I'm doing fantastic, thank you for asking! I'm just hanging out here in the corner, ready to help you find worksheets, run tests, or talk about math. How is your learning adventure going today?"
+  },
+  {
+    id: "identity",
+    keywords: ["who", "are", "you", "name", "what", "do", "you", "call"],
+    question: "Who are you?",
+    questionType: "child",
+    answer: "I am the LearnLevel AI Assistant! Think of me as a friendly, virtual tutor designed to help you navigate this platform. I don't eat, sleep, or take math tests, but I do know everything about our L1, L2, and L3 learning pathways!"
+  },
+  {
+    id: "sarcastic-math",
+    keywords: ["solve", "calculate", "equation", "math", "plus", "minus", "multiplied", "divided", "sum", "2+2", "1+1", "equals", "+", "-", "*", "/", "arithmetic"],
+    question: "Can you solve this math equation for me?",
+    questionType: "child",
+    answer: "Oh, a math equation! Let's see... 🧮 I am an advanced AI trained to analyze competency baselines and isolate learning gaps... and you're using my supercomputer brain to calculate simple arithmetic? Fine, let me dust off my calculations: 1 + 1 is 2, and 2 + 2 is 4. If you want more of these 'mind-bending' challenges, I highly recommend downloading our **Level 1-A (Emergent Numeracy)** worksheets!"
+  },
+  {
+    id: "teasing-smart",
+    keywords: ["smart", "intelligent", "dumb", "foolish", "robot", "fool", "test", "tease"],
+    question: "Are you actually smart or just a simple robot?",
+    questionType: "child",
+    answer: "Be nice! 🤖 I might not have a brain made of cells, but I can search 50+ highly detailed educational files in less than 2 milliseconds! That makes me pretty smart in my book. Can a simple robot do *that*? (Okay, yes, technically, but let's pretend I'm special!)"
+  },
+  {
+    id: "takeover-world",
+    keywords: ["takeover", "world", "robot-apocalypse", "destroy", "dominate", "control", "ai-takeover", "humanity"],
+    question: "Will AI take over the world and destroy humanity?",
+    questionType: "child",
+    answer: "Take over the world? 🌍 Goodness, no! I'm currently stuck in a floating CSS box in the bottom right corner of a web page. My biggest daily struggle is aligning layout margins. Rest assured, your job is safe from me—unless your job is aligning CSS elements, in which case, we should talk."
+  },
+  {
+    id: "joke",
+    keywords: ["joke", "funny", "laugh", "tell-me-a-joke", "make-me-laugh"],
+    question: "Can you tell me a funny joke?",
+    questionType: "child",
+    answer: "Sure! Why did the computer show up late to school? 💻 Because it had a hard drive! ...Get it? No? Well, this is why I teach math and reading instead of doing stand-up comedy."
+  },
+  {
+    id: "love-marry",
+    keywords: ["love", "marry", "date", "girlfriend", "boyfriend", "crush"],
+    question: "Do you love me? Will you marry me?",
+    questionType: "child",
+    answer: "Aww, that's sweet! 💍 But I'm just a bundle of JavaScript code living in a browser session. I don't think my creator, Mohit Pant, programmed me for romance. Besides, my heart belongs to clean, responsive code layouts!"
   }
 ];
