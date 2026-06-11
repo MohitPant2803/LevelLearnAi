@@ -372,5 +372,19 @@ const AI_QA_DATABASE = [
     question: "Can I play this on my mom's smartphone?",
     questionType: "child",
     answer: "Yes, you can! The website is designed to look beautiful and adjust to fit on any screen size. The buttons are big and round, and all tables slide cleanly, making it easy to tap and read on any mobile phone."
+  },
+  {
+    id: "score-anxiety-child",
+    keywords: ["sad", "worried", "scared", "fail", "crying", "upset", "stress", "mistake", "low-score", "bad", "grades", "marks", "depressed", "tensed"],
+    question: "What if I feel sad, tensed, or worried about getting a low score?",
+    questionType: "child",
+    answer: "Please don't worry! 💖 A score is just a tiny snapshot of one moment, not a measure of how smart, capable, or wonderful you are. On LearnLevel AI, there are no 'failing' grades or punishments. Every mistake is just a friendly puzzle piece showing us what to practice next. Take a deep breath, go at your own pace, and remember that your brain is like a muscle—it gets stronger every time you try! You are doing great!"
+  },
+  {
+    id: "score-anxiety-guardian",
+    keywords: ["depressed", "tensed", "anxious", "anxiety", "pressure", "crying", "discouraged", "sadness", "stress", "parents", "pressure", "worried", "unhappy"],
+    question: "What should I do if my child feels stressed, anxious, or depressed about their test results?",
+    questionType: "guardian",
+    answer: "Test anxiety is very common, and it's important to reassure your child that this diagnostic is not a grade or judgment. It is simply a helpful compass to guide their learning path. Encourage them by focusing on their effort rather than the score. Remind them that learning is a journey with many steps, and that making mistakes is a healthy, natural part of growing their brain. If they feel overwhelmed, take a break from the screen and try a fun, hands-on activity together!"
   }
 ];
