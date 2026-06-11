@@ -4,41 +4,41 @@
   --font-primary: 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-display: 'Outfit', var(--font-primary);
 
-  /* Color Palette - Light Mode (Default) - Organic Warm Scandinavian Premium */
-  --bg-primary: hsl(40, 24%, 96%); /* Cozy Warm Sand/Oat */
+  /* Color Palette - Light Mode (Default) - Poster-inspired Premium Blue/Indigo/Teal */
+  --bg-primary: hsl(210, 40%, 98%); /* Soft Cool Slate White */
   --bg-secondary: #ffffff;
   --header-bg: rgba(255, 255, 255, 0.96);
-  --bg-tertiary: hsl(40, 16%, 91%); /* Tighter Warm Sand shade */
+  --bg-tertiary: hsl(210, 30%, 94%); /* Light Slate Gray shade */
   
-  --text-primary: hsl(165, 30%, 12%); /* Deep Charcoal Pine */
-  --text-secondary: hsl(165, 12%, 35%); /* Muted Pine Slate */
-  --text-muted: hsl(165, 8%, 56%);
+  --text-primary: hsl(222, 47%, 11%); /* Deep Indigo Slate */
+  --text-secondary: hsl(215, 16%, 42%); /* Slate Gray */
+  --text-muted: hsl(215, 15%, 60%);
   
-  --primary: hsl(165, 40%, 28%); /* Deep Spruce Pine Green */
-  --primary-rgb: 34, 83, 72;
-  --primary-light: hsl(165, 30%, 94%);
-  --primary-dark: hsl(165, 40%, 20%);
+  --primary: hsl(221, 83%, 53%); /* Bright Royal Blue */
+  --primary-rgb: 37, 99, 235;
+  --primary-light: hsl(221, 83%, 95%);
+  --primary-dark: hsl(221, 83%, 40%);
   
-  --accent-teal: hsl(150, 45%, 38%); /* Soft Mint Green */
-  --accent-teal-light: hsl(150, 45%, 94%);
+  --accent-teal: hsl(173, 80%, 36%); /* Ocean Teal */
+  --accent-teal-light: hsl(173, 80%, 95%);
   
-  --accent-amber: hsl(12, 70%, 54%); /* Warm Terracotta Red */
-  --accent-amber-light: hsl(12, 70%, 94%);
+  --accent-amber: hsl(20, 86%, 53%); /* Warm Terracotta Red/Orange */
+  --accent-amber-light: hsl(20, 86%, 95%);
   
-  --accent-purple: hsl(230, 60%, 54%); /* Cozy Periwinkle Blue */
-  --accent-purple-light: hsl(230, 60%, 95%);
+  --accent-purple: hsl(258, 81%, 59%); /* Playful Violet/Purple */
+  --accent-purple-light: hsl(258, 81%, 96%);
 
-  --danger: hsl(355, 70%, 50%);
-  --danger-light: hsl(355, 70%, 95%);
+  --danger: hsl(355, 84%, 55%);
+  --danger-light: hsl(355, 84%, 96%);
   
-  --border-color: hsl(40, 15%, 86%);
+  --border-color: hsl(210, 20%, 90%);
   --border-focus: var(--primary);
   
-  /* Shadows - subtle organic warm grey shadows */
-  --shadow-sm: 0 2px 4px 0 rgba(34, 83, 72, 0.02);
-  --shadow-md: 0 8px 16px -4px rgba(34, 83, 72, 0.04), 0 4px 6px -2px rgba(34, 83, 72, 0.02), 0 0 0 1px rgba(34, 83, 72, 0.01);
-  --shadow-lg: 0 20px 35px -10px rgba(34, 83, 72, 0.05), 0 10px 15px -8px rgba(34, 83, 72, 0.02), 0 0 0 1px rgba(34, 83, 72, 0.01);
-  --shadow-xl: 0 25px 50px -15px rgba(34, 83, 72, 0.08), 0 12px 20px -10px rgba(34, 83, 72, 0.03);
+  /* Shadows - subtle cool slate shadows */
+  --shadow-sm: 0 2px 4px 0 rgba(15, 23, 42, 0.02);
+  --shadow-md: 0 8px 16px -4px rgba(15, 23, 42, 0.04), 0 4px 6px -2px rgba(15, 23, 42, 0.02), 0 0 0 1px rgba(15, 23, 42, 0.01);
+  --shadow-lg: 0 20px 35px -10px rgba(15, 23, 42, 0.05), 0 10px 15px -8px rgba(15, 23, 42, 0.02), 0 0 0 1px rgba(15, 23, 42, 0.01);
+  --shadow-xl: 0 25px 50px -15px rgba(15, 23, 42, 0.08), 0 12px 20px -10px rgba(15, 23, 42, 0.03);
   
   /* Layout */
   --header-height: 72px;
@@ -53,35 +53,35 @@
   --transition-slow: 0.4s ease;
 }
 
-/* Dark Mode Tokens - Starry Cozy Pine Forest */
+/* Dark Mode Tokens - Starry Cozy Indigo Forest */
 body.dark-mode {
-  --bg-primary: hsl(165, 25%, 8%); /* Dark Forest Obsidian */
-  --bg-secondary: hsl(165, 20%, 12%);
-  --header-bg: rgba(22, 33, 30, 0.96);
-  --bg-tertiary: hsl(165, 15%, 17%);
+  --bg-primary: hsl(222, 40%, 6%); /* Deep Indigo Night */
+  --bg-secondary: hsl(222, 35%, 11%);
+  --header-bg: rgba(17, 24, 39, 0.96);
+  --bg-tertiary: hsl(222, 25%, 16%);
   
-  --text-primary: hsl(165, 20%, 94%); /* Light Mint Ice */
-  --text-secondary: hsl(165, 12%, 74%);
-  --text-muted: hsl(165, 8%, 54%);
+  --text-primary: hsl(210, 40%, 98%); /* Cool Ice White */
+  --text-secondary: hsl(215, 20%, 80%);
+  --text-muted: hsl(215, 15%, 55%);
   
-  --primary: hsl(165, 45%, 42%); /* Emerald Pine */
-  --primary-rgb: 54, 139, 120;
-  --primary-light: hsl(165, 45%, 15%);
-  --primary-dark: hsl(165, 45%, 32%);
+  --primary: hsl(217, 91%, 60%); /* Bright Royal Blue */
+  --primary-rgb: 59, 130, 246;
+  --primary-light: hsl(224, 76%, 15%);
+  --primary-dark: hsl(224, 76%, 40%);
   
-  --accent-teal: hsl(150, 45%, 44%); /* Soft Mint Green */
-  --accent-teal-light: hsl(150, 45%, 15%);
+  --accent-teal: hsl(173, 80%, 40%); /* Bright Teal */
+  --accent-teal-light: hsl(173, 80%, 15%);
   
-  --accent-amber: hsl(12, 70%, 58%); /* Terracotta Red */
-  --accent-amber-light: hsl(12, 70%, 16%);
+  --accent-amber: hsl(20, 86%, 58%); /* Terracotta Orange */
+  --accent-amber-light: hsl(20, 86%, 16%);
 
-  --accent-purple: hsl(230, 65%, 62%); /* Bright Periwinkle */
-  --accent-purple-light: hsl(230, 65%, 17%);
+  --accent-purple: hsl(258, 81%, 72%); /* Bright Violet */
+  --accent-purple-light: hsl(258, 81%, 20%);
 
   --danger: hsl(355, 75%, 55%);
   --danger-light: hsl(355, 75%, 16%);
   
-  --border-color: hsl(165, 15%, 20%);
+  --border-color: hsl(222, 20%, 20%);
   
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.01);
@@ -965,7 +965,7 @@ img {
 }
 
 .cta-banner-card {
-  background: linear-gradient(135deg, #0b221d 0%, #1f493f 100%);
+  background: linear-gradient(135deg, #090d16 0%, #17153a 100%);
   color: #ffffff;
   border-radius: var(--border-radius-lg);
   padding: 4.5rem 4rem;
