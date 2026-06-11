@@ -920,7 +920,7 @@ img {
 
 .timeline-step-arrow {
   color: var(--text-muted);
-  margin-top: 12px;
+  margin-top: 14px; /* Exactly aligns center of arrow (10px) with center of circle (24px) */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2282,9 +2282,11 @@ img {
 
   .nav-links {
     grid-column: span 2;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+    width: 100%;
     padding: 0.5rem 0;
     border-top: 1px solid var(--border-color);
     margin-top: 0.25rem;
@@ -2295,11 +2297,11 @@ img {
   }
   
   .nav-item {
-    font-size: 0.8125rem;
-    padding: 0.35rem 0;
-    flex-shrink: 1;
+    font-size: 0.8rem;
+    padding: 0.35rem 2px;
+    flex: 1;
     text-align: center;
-    width: 100%;
+    white-space: nowrap;
   }
   
   .nav-item::after {
@@ -2364,6 +2366,7 @@ img {
   
   .timeline-step-arrow {
     align-self: center;
+    margin-top: 0; /* Remove top margin shift in vertical flow to center arrows perfectly */
   }
 
   .timeline-step-arrow svg {
@@ -2397,6 +2400,10 @@ img {
 @media (max-width: 480px) {
   #btn-header-cta {
     display: none; /* Hide header CTA button to prevent logo collision on mobile */
+  }
+
+  .nav-item {
+    font-size: 0.725rem; /* Shrink navigation link text further to fit on 1 line */
   }
 
   .hero-content h1 {
@@ -2728,5 +2735,11 @@ body.dark-mode .wave-flip {
     width: auto;
     height: calc(100vh - 120px);
     max-height: 460px;
+  }
+}
+
+@media (max-width: 360px) {
+  .nav-item {
+    font-size: 0.65rem; /* Shrink navigation links slightly further on tiny displays to remain strictly on 1 line */
   }
 }
