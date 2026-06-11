@@ -1364,6 +1364,26 @@ class LearnLevelApp {
     });
   }
 
+  isGibberish(query) {
+    const clean = query.trim().toLowerCase().replace(/[^a-z]/g, "");
+    if (clean.length === 0) return true; // Just numbers or punctuation symbols
+
+    // 1. Check if it's a single word and long with no vowels (consonant mash, e.g. "sdfghjkl")
+    const hasVowels = /[aeiouy]/.test(clean);
+    if (!hasVowels && clean.length >= 4) return true;
+
+    // 2. Check for extreme repeated characters, e.g. "aaaaaa", "qwertyqwerty"
+    if (/(.)\1{4,}/.test(clean)) return true; // e.g. "aaaaa" or "zzzzz"
+
+    // 3. Check for keyboard row mash patterns (like "asdfgh", "qwert", "zxcvb")
+    const mashPatterns = ["asdf", "sdfg", "dfgh", "fghj", "ghjk", "hjkl", "qwer", "wert", "erty", "rtyu", "tyui", "yuio", "uiop", "zxcv", "xcvb", "cvbn", "vbnm"];
+    for (const pat of mashPatterns) {
+      if (clean.includes(pat)) return true;
+    }
+
+    return false;
+  }
+
   findBestAnswer(userQuery) {
     // 1. Tokenize query: lowercase, strip punctuation, split into word tokens
     const words = userQuery.toLowerCase()
@@ -1393,7 +1413,25 @@ class LearnLevelApp {
     if (highestScore > 0 && bestMatch) {
       return bestMatch.answer;
     }
-    return "Please ask relevant questions to the website, such as about the diagnostic test, learning levels, worksheets, dashboard metrics, or platform installation.";
+
+    // 4. Sarcastic fallback replies depending on rubbish type
+    if (this.isGibberish(userQuery)) {
+      const gibberishReplies = [
+        "Whoa! ⌨️ Did your cat just walk across the keyboard? Or are you testing my patience by typing pure gibberish? Let's stick to real words, please!",
+        "Beep boop... processing... 🤖 I don't speak keyboard-mash. Please type actual words so my CPU doesn't melt trying to decode that!",
+        "Is that a secret code? 🕵️‍♂️ If so, my decoder ring is broken. Let's try typing real questions about worksheets or learning paths!",
+        "Keyboard mashing detected! 🧮 My developer, Mohit Pant, forgot to install a gibberish-to-English translator. Please ask a real question!"
+      ];
+      return gibberishReplies[Math.floor(Math.random() * gibberishReplies.length)];
+    } else {
+      const offTopicReplies = [
+        "Wait, let me consult my galactic databases... 🌌 Nope, nothing about that here! Let's stick to student levels or worksheets, shall we?",
+        "A fascinating query! Unfortunately, my knowledge starts at letters (L1-A) and ends at job-readiness (L3-C). Let's stay on topic!",
+        "My neural networks are highly optimized for mapping student skill gaps, not general trivia. Try asking about the educator dashboard instead!",
+        "Interesting question, but my AI training dataset only covers LearnLevel AI. 🎯 Try asking about diagnostics, levels (L1, L2, L3), or worksheet packages!"
+      ];
+      return offTopicReplies[Math.floor(Math.random() * offTopicReplies.length)];
+    }
   }
 }
 
