@@ -1,298 +1,376 @@
 // LearnLevel AI - Comprehensive Ask AI Chatbot Q&A Database
+// Styled specifically for questions a Guardian (parent/tutor) or a Child would ask.
 
 const AI_QA_DATABASE = [
   {
     id: "purpose",
-    keywords: ["what", "purpose", "mission", "learnlevel", "learnlevelai", "about", "why", "exist", "goal"],
-    question: "What is the purpose of LearnLevel AI?",
-    answer: "LearnLevel AI is an AI-powered personalized learning platform that maps and supports learners according to their actual competency levels, rather than just their age or class. Its mission is to support educators and volunteers in mapping skill gaps and recommending target worksheets for students."
+    keywords: ["what", "purpose", "mission", "learnlevel", "learnlevelai", "about", "why", "exist", "goal", "help", "learn"],
+    question: "How will this website help my child learn better?",
+    questionType: "guardian",
+    answer: "LearnLevel AI acts as a learning GPS for your child! Instead of placing them in a generic class based solely on their age, it finds their exact strengths and struggles. This helps us recommend the perfect worksheets so they can study at a pace that is just right for them without feeling overwhelmed."
   },
   {
     id: "diagnostic",
-    keywords: ["diagnostic", "quiz", "test", "assessment", "wizard", "start", "setup", "begin", "evaluate"],
-    question: "How does the Diagnostic Assessment work?",
-    answer: "The Diagnostic Assessment Center allows mentors to evaluate a student. The wizard presents 4 simple multiple-choice questions depending on the chosen category (Child, Teenager, or Young Adult). It evaluates Literacy, Numeracy, Academics, Digital, or Communication skills to place the learner in a suitable Level."
+    keywords: ["diagnostic", "quiz", "test", "assessment", "wizard", "start", "setup", "begin", "evaluate", "find", "level"],
+    question: "How do I start the test to find my child's learning level?",
+    questionType: "guardian",
+    answer: "It's easy! Go to the 'Diagnostic Test' tab in the top navigation. Enter your child's name, age, and choose their age category. Your child will then take a short, friendly 4-question quiz that maps their literacy, math, and communication skills."
   },
   {
     id: "saving",
-    keywords: ["save", "storing", "save-to-dashboard", "submit", "record", "persist", "saving", "profile"],
-    question: "How do I save a student's diagnostic results?",
-    answer: "Once you complete the 4-question quiz, click 'Save to Educator Dashboard' on the results page. This automatically generates a learner profile with calculated skill averages, isolated gaps, and logs them in local memory, immediately updating dashboard charts and tables."
+    keywords: ["save", "storing", "save-to-dashboard", "submit", "record", "persist", "saving", "profile", "lose", "scores"],
+    question: "Where do I save my child's test results so I don't lose them?",
+    questionType: "guardian",
+    answer: "Once your child finishes the 4-question diagnostic quiz, click the green 'Save to Educator Dashboard' button on the results screen. This instantly creates their student profile, lists their learning needs, and saves their scores in the dashboard tab."
   },
   {
     id: "categories",
-    keywords: ["category", "categories", "age", "brackets", "child", "teenager", "adult", "young_adult", "groups"],
-    question: "What age groups are supported on the platform?",
-    answer: "LearnLevel AI covers three major brackets:\n1. **Young Child (Ages 5-9)**: Foundational Literacy & Numeracy (L1-A to L1-C)\n2. **Teenager (Ages 10-14)**: Concept Clarity & Career Awareness (L2-A to L2-C)\n3. **Young Adult (Ages 15+)**: Digital Tools, Communication & Job Employability (L3-A to L3-C)."
+    keywords: ["category", "categories", "age", "brackets", "child", "teenager", "adult", "young_adult", "groups", "old"],
+    question: "Which learning path is right for my child's age?",
+    questionType: "guardian",
+    answer: "We support three friendly age brackets:\n1. **Young Child (Ages 5-9)**: Focused on learning letters, phonics sounds, and basic counting (Levels L1-A to L1-C).\n2. **Teenager (Ages 10-14)**: Focused on reading comprehension, science, fractions, and career awareness (Levels L2-A to L2-C).\n3. **Young Adult (Ages 15+)**: Focused on resumes, mock interviews, spreadsheets, and job employability (Levels L3-A to L3-C)."
   },
   {
     id: "levels-l1",
-    keywords: ["l1", "l1-a", "l1-b", "l1-c", "child-level", "emergent", "phonics", "reading"],
-    question: "What are the L1 levels for Young Children?",
-    answer: "L1 levels target foundational literacy and numeracy:\n- **L1-A (Emergent)**: Letter recognition (A-Z) and counting up to 10.\n- **L1-B (Phonics & Operations)**: Short word sounds and addition/subtraction within 10.\n- **L1-C (Fluent Reading)**: Simple sentences and single-digit mathematical word problems."
+    keywords: ["l1", "l1-a", "l1-b", "l1-c", "child-level", "emergent", "phonics", "reading", "little", "young"],
+    question: "What will my little one learn in the Level 1 (L1) classes?",
+    questionType: "guardian",
+    answer: "Level 1 is made for children ages 5-9:\n- **L1-A**: Recognizing alphabet letters (A-Z) and counting up to 10.\n- **L1-B**: sound-blends, spelling short words, and basic addition/subtraction within 10.\n- **L1-C**: Reading simple sentences and solving single-digit math story problems."
   },
   {
     id: "levels-l2",
-    keywords: ["l2", "l2-a", "l2-b", "l2-c", "teenager-level", "fractions", "scientific", "critical"],
-    question: "What are the L2 levels for Teenagers?",
-    answer: "L2 levels target concept clarity and career exposure:\n- **L2-A (Reading & Math)**: Reading comprehension and multi-digit mathematical operations.\n- **L2-B (Science & Applied Math)**: Introduction to scientific inquiry, fractions, and percentage logic.\n- **L2-C (Critical Thinking)**: Analyzing complex texts, expressing logical reasoning steps, and career role exposure."
+    keywords: ["l2", "l2-a", "l2-b", "l2-c", "teenager-level", "fractions", "scientific", "critical", "subjects", "teen"],
+    question: "What subjects does my teenager study in Level 2 (L2)?",
+    questionType: "guardian",
+    answer: "Level 2 is designed for teenagers ages 10-14:\n- **L2-A**: Advanced reading comprehension and multi-digit math operations (like multiplication).\n- **L2-B**: Simple science questions, fractions, and percentage logic.\n- **L2-C**: Solving critical thinking problems and learning about different career roles."
   },
   {
     id: "levels-l3",
-    keywords: ["l3", "l3-a", "l3-b", "l3-c", "adult-level", "employability", "office", "resume", "cv"],
-    question: "What are the L3 levels for Young Adults?",
-    answer: "L3 levels target job-readiness and digital skills:\n- **L3-A (Digital & Verbal)**: Basic computer interfaces, professional email settings, and verbal introductions.\n- **L3-B (Office & English)**: Spreadsheets formulas (SUM, AVERAGE), formal requests, and workspace collaboration.\n- **L3-C (Job-Ready)**: Resume/CV crafting, mock interviews, cover letters, and career tracking."
+    keywords: ["l3", "l3-a", "l3-b", "l3-c", "adult-level", "employability", "office", "resume", "cv", "job", "career"],
+    question: "How does Level 3 (L3) prepare young adults for jobs?",
+    questionType: "guardian",
+    answer: "Level 3 is for older youth ages 15+:\n- **L3-A**: Basic computer typing, setting up professional emails, and introduction skills.\n- **L3-B**: Writing spreadsheets formulas (like SUM/AVERAGE) and workplace English communication.\n- **L3-C**: Creating a professional resume, practice interviews, and cover letters."
   },
   {
     id: "dashboard",
-    keywords: ["dashboard", "educator", "tracker", "metrics", "monitoring", "average", "stats"],
-    question: "What can I track on the Educator Dashboard?",
-    answer: "The Educator Dashboard provides statistics on: Total Active Students, average academic baseline score, average digital literacy, and average communication scores. It also has interactive SVG charts for subject breakdowns, cohort age distribution, and longitudinal progress trends."
+    keywords: ["dashboard", "educator", "tracker", "metrics", "monitoring", "average", "stats", "report"],
+    question: "How does the dashboard help me keep track of my kids' scores?",
+    questionType: "guardian",
+    answer: "The Educator Dashboard shows a summary of all registered kids, their class averages in math and reading, and interactive charts. It also lists every student in a progress table so you can see who needs extra attention."
   },
   {
     id: "add-student",
-    keywords: ["add", "new", "register", "create", "insert", "student", "learner", "profile"],
-    question: "How do I add a new student?",
-    answer: "There are two ways:\n1. Click '+ Add New Student' on the Educator Dashboard to open a quick modal and enter student grades, gaps, and levels manually.\n2. Go to the 'Diagnostic Test' tab and let the student complete the quiz; it will auto-calculate their level and let you save their profile."
+    keywords: ["add", "new", "register", "create", "insert", "student", "learner", "profile", "child"],
+    question: "How do I register a new child on the dashboard?",
+    questionType: "guardian",
+    answer: "You can click the '+ Add New Student' button on the dashboard to fill out a quick form manually, or let your child complete the quiz in the 'Diagnostic Test' tab, which automatically saves their profile for you."
   },
   {
     id: "delete-student",
     keywords: ["delete", "remove", "erase", "discard", "student", "profile"],
-    question: "How do I delete a student profile?",
-    answer: "Go to the Student Progress Tracker table on the Educator Dashboard. Identify the student row, and click the red '✕' action button on the far right. Confirm the dialog warning to remove the profile and update class averages."
+    question: "How do I remove a student's profile if they leave?",
+    questionType: "guardian",
+    answer: "Go to the Student Progress Tracker table on the dashboard. Find the child's row, and click the red '✕' button on the far right. Confirm the popup alert, and their profile will be removed."
   },
   {
     id: "student-profile",
-    keywords: ["profile", "details", "trajectory", "trend", "individual", "report", "progress"],
-    question: "How do I view a student's individual progress profile?",
-    answer: "On the Educator Dashboard table, click the 'Profile' button in any student's row. This opens a large modal showing detailed scores across all subjects, their specific gap list, recommended worksheets, and a customized longitudinal trend chart showing their milestones."
+    keywords: ["profile", "details", "trajectory", "trend", "individual", "report", "progress", "card"],
+    question: "Where can I see a detailed report card and progress chart for my child?",
+    questionType: "guardian",
+    answer: "In the dashboard table, click the 'Profile' button next to your child's name. A large modal will pop open showing their grades, specific skill gaps, recommended worksheets, and a line chart of their progress over time."
   },
   {
     id: "charts",
-    keywords: ["charts", "svg", "visualizations", "donut", "bar", "trend", "line-chart", "graphs"],
-    question: "What charts are available on the dashboard?",
-    answer: "There are three interactive SVG charts:\n1. **Subject Competency (Bar Chart)**: Shows averages in Academics, Digital, Communication, and Employability.\n2. **Cohort Distribution (Donut Chart)**: Shows percentage splits of Child/Teen/Adult cohorts.\n3. **Longitudinal Trend (Line Chart)**: Tracks the collective progress average over historical months."
+    keywords: ["charts", "svg", "visualizations", "donut", "bar", "trend", "line-chart", "graphs", "colored"],
+    question: "What do these colored graphs and charts on the dashboard show?",
+    questionType: "guardian",
+    answer: "We have three helpful charts:\n1. **Subject Competency (Bar Chart)**: Shows the average score across Math, Digital, and English.\n2. **Cohort Distribution (Donut Chart)**: Shows the percentage split between kids, teenagers, and young adults.\n3. **Longitudinal Trend (Line Chart)**: Tracks how the whole class is improving month-by-month."
   },
   {
     id: "worksheets",
-    keywords: ["worksheets", "vault", "library", "printable", "download", "pdf", "tasks", "checklist"],
-    question: "How do I use worksheets in the library?",
-    answer: "Go to the 'Resources Library' tab. Click on any worksheet card (arranged in a tidy 3-column grid) to open a checklist preview modal detailing estimated time, learning topics, and educator notes. Click 'Download Practice Pack' to simulate saving the PDF pack."
+    keywords: ["worksheets", "vault", "library", "printable", "download", "pdf", "tasks", "checklist", "study"],
+    question: "How can my child study using the worksheets in the vault?",
+    questionType: "guardian",
+    answer: "Go to the 'Resources Library' tab. Click on any worksheet card to view details (like estimated time and checklist topics). Click 'Download Practice Pack' to simulate saving the PDF file for offline study."
   },
   {
     id: "subject-filters",
-    keywords: ["filter", "sorting", "chips", "search", "subject", "literacy", "numeracy", "digital", "communication"],
-    question: "How do I search or filter resources?",
-    answer: "At the top of the Resource Vault, click on the **Age Category tabs** to select a cohort (Child, Teenager, Young Adult). You can also click the **horizontal subject chips** (e.g. Literacy, Digital Skills) to instantly narrow down matches. Empty level headers are automatically hidden."
+    keywords: ["filter", "sorting", "chips", "search", "subject", "literacy", "numeracy", "digital", "communication", "math", "reading"],
+    question: "How do I search for a specific subject like Math or Reading?",
+    questionType: "guardian",
+    answer: "At the top of the Resources Library, you can click on the **Age Category tabs** (Child, Teenager, Young Adult) or tap on the **horizontal subject chips** (like Literacy, Numeracy, Digital Skills) to filter and show only the relevant worksheets."
   },
   {
     id: "tech-stack",
-    keywords: ["tech", "stack", "framework", "technologies", "javascript", "css", "html", "code", "packages"],
-    question: "What technologies were used to build this website?",
-    answer: "The project is built entirely on a lightweight vanilla stack to guarantee zero-lag performance:\n- **Structure**: Semantic HTML5\n- **Styling**: Vanilla CSS3 (Custom properties/variables, media queries, keyframe animations)\n- **Logic**: Vanilla ES6 JavaScript (No frameworks like React or Tailwind, ensuring lightweight rendering)."
+    keywords: ["tech", "stack", "framework", "technologies", "javascript", "css", "html", "code", "packages", "computer"],
+    question: "What computer code was used to make this website?",
+    questionType: "child",
+    answer: "This website was written using simple, raw code: standard **HTML** for the structure, **CSS** for the beautiful colors and animations, and **JavaScript** for the logic. We didn't use heavy software bundles so it loads super fast, even on old cell phones!"
   },
   {
     id: "how-to-run",
-    keywords: ["run", "install", "server", "deploy", "local", "python", "localhost", "port"],
-    question: "How do I run this website locally?",
-    answer: "Open a terminal inside the project workspace folder and boot up a lightweight HTTP server. For example, using Python:\n`python -m http.server 8000`\nThen, open your web browser and navigate to: `http://localhost:8000`."
+    keywords: ["run", "install", "server", "deploy", "local", "python", "localhost", "port", "home", "computer"],
+    question: "How can I run this website on my own computer at home?",
+    questionType: "guardian",
+    answer: "You can download the project folder, open a terminal inside it, and run a quick server using Python: `python -m http.server 8000`. Then open your web browser and go to `http://localhost:8000`."
   },
   {
     id: "license",
-    keywords: ["license", "mit", "open", "source", "github", "git", "remote"],
-    question: "Is this project open source?",
-    answer: "Yes, LearnLevel AI is open-source under the MIT license. You can find the remote repository on GitHub at: `https://github.com/MohitPant2803/LevelLearnAi.git`."
+    keywords: ["license", "mit", "open", "source", "github", "git", "remote", "pay", "money", "free", "cost"],
+    question: "Do I have to pay money to use this website or worksheets?",
+    questionType: "guardian",
+    answer: "No, it is 100% free! LearnLevel AI is an open-source educational tool licensed under the MIT License. Anyone, including parents, schools, and NGOs, can use, modify, and share it without paying a dime."
   },
   {
     id: "dark-mode",
-    keywords: ["theme", "dark", "light", "toggle", "sun", "moon", "recolor"],
-    question: "Does the website support dark mode?",
-    answer: "Yes, there is an accessible sun/moon toggle button in the top-right header. In dark mode, the site transitions to a premium 'Starry Indigo Night' theme, and all dynamic SVG charts adjust their text colors automatically for optimal contrast."
+    keywords: ["theme", "dark", "light", "toggle", "sun", "moon", "recolor", "eyes", "night"],
+    question: "How do I turn on the night/dark theme for my eyes?",
+    questionType: "child",
+    answer: "Look at the top-right corner of the screen! Click the little moon icon to switch to dark mode. The background will turn into a cozy, dark spruce color which is much easier on your eyes in a dark room. Click the sun icon to switch back!"
   },
   {
     id: "creator",
-    keywords: ["author", "creator", "built", "who", "developer", "pair", "antigravity"],
-    question: "Who developed LearnLevel AI?",
-    answer: "LearnLevel AI was designed and programmed by Antigravity, a powerful agentic AI coding assistant from Google DeepMind, pair-programming with the developer Mohit Pant."
+    keywords: ["author", "creator", "built", "who", "developer", "pair", "antigravity", "made"],
+    question: "Who made this cool website?",
+    questionType: "child",
+    answer: "This website was built by a developer named **Mohit Pant** working with **Antigravity**, a smart AI coding helper from Google DeepMind. We coded this together to help kids learn everywhere!"
   },
   {
     id: "performance",
-    keywords: ["lag", "slow", "performance", "rendering", "scroll", "heavy", "optimized"],
-    question: "Why does the site run so smoothly without lag?",
-    answer: "The platform has been optimized for high performance:\n1. Replaced heavy CSS `backdrop-filter` blurs on headers and modal overlays with solid/translucent alpha HSL variables to prevent GPU paint latency.\n2. Replaced `transition: all` rules on cards and inputs with specific properties (`transform`, `box-shadow`, `border-color`) to avoid layout thrashing."
+    keywords: ["lag", "slow", "performance", "rendering", "scroll", "heavy", "optimized", "freeze", "fast"],
+    question: "Why does this website load so fast without freezing?",
+    questionType: "child",
+    answer: "We built this site without heavy frameworks and avoided complicated filter effects. We also made sure that animations use lightweight rules. This ensures it runs smoothly, even on older mobile phones with slow internet connections."
   },
   {
     id: "gaps",
-    keywords: ["gaps", "skill", "weakness", "borrowing", "phonics", "fraction", "formula"],
-    question: "What are identified skill gaps?",
-    answer: "Skill gaps are specific, localized conceptual roadblocks isolated by the diagnostic assessment (e.g. 'subtraction borrowing', 'phonics letter sounds', 'Excel formulas'). Instead of declaring a child failing, the platform identifies the exact roadblock to target."
+    keywords: ["gaps", "skill", "weakness", "borrowing", "phonics", "fraction", "formula", "mean"],
+    question: "What does it mean when the test says my child has a 'skill gap'?",
+    questionType: "guardian",
+    answer: "A skill gap is simply a specific brick missing in your child's learning ladder. For example, they might know how to add numbers, but struggle with 'subtraction borrowing'. By pointing out this exact brick, we can fix it easily rather than labeling them as failing the entire subject."
   },
   {
     id: "apple-design",
-    keywords: ["apple", "premium", "finish", "design", "aesthetics", "kerning", "stepper"],
-    question: "What features give the site its premium Apple-like finish?",
-    answer: "The premium feel is established through:\n1. Tight letter-spacing/kerning on Outfit headings (`-0.025em` and `-0.04em`).\n2. Sleek, perfectly rounded buttons (`.btn-pill`).\n3. Modern macOS/iOS split-layout CTA cards with deep metallic gradients.\n4. Segmented controllers and custom SVG vector icons instead of emojis."
+    keywords: ["apple", "premium", "finish", "design", "aesthetics", "kerning", "stepper", "modern", "pretty"],
+    question: "Why does this website look so modern and pretty?",
+    questionType: "child",
+    answer: "We used clean geometric shapes, custom vector icons, tight letter-spacing, and perfectly rounded buttons (called pill buttons). This replicates the high-quality designs you see on modern phones and tablets."
   },
   {
     id: "persistence",
-    keywords: ["database", "save", "reload", "refresh", "lost", "memory", "permanent"],
-    question: "Does student data persist when I reload the page?",
-    answer: "In this mock frontend demonstration, new student profiles are added to the active session list in JavaScript memory. While it reflects live updates on charts and tables immediately, refreshing the browser will reset the database back to the default mock cohort."
+    keywords: ["database", "save", "reload", "refresh", "lost", "memory", "permanent", "disappear"],
+    question: "Will my child's saved scores disappear if I refresh the page?",
+    questionType: "guardian",
+    answer: "Yes, in this frontend demonstration version, refreshing the browser will reset the database back to the default list of 8 student profiles. In a production version, we would link this to a permanent database to keep scores safe forever."
   },
   {
     id: "volunteer",
-    keywords: ["volunteer", "nonprofit", "ngo", "mentor", "tutor", "teacher", "classes"],
-    question: "Is this platform suitable for volunteer tutoring groups?",
-    answer: "Absolutely! LearnLevel AI is designed specifically for volunteer networks, NGOs, and non-traditional educational environments. It enables non-professional teachers or mentors to quickly evaluate students and immediately unlock structured, level-appropriate teaching worksheets."
+    keywords: ["volunteer", "nonprofit", "ngo", "mentor", "tutor", "teacher", "classes", "home", "parent"],
+    question: "Can I use this program as a volunteer tutor or parent at home?",
+    questionType: "guardian",
+    answer: "Absolutely! The site is built for parents, volunteer tutors, and NGOs who want a quick, clear way to test children and get instant printable worksheets. You don't need a professional teaching degree to guide a child through these lessons."
   },
   {
     id: "search-filter-table",
-    keywords: ["search", "find", "locate", "table", "student-search", "toolbar", "query", "filter-table"],
-    question: "How does the student search toolbar work?",
-    answer: "On the Educator Dashboard, there is a search bar directly above the student table. As you type, the table filters row-by-row in real-time, matching student names or assigned levels. If no students match your query, a 'No students found' placeholder appears."
+    keywords: ["search", "find", "locate", "table", "student-search", "toolbar", "query", "filter-table", "name"],
+    question: "How do I find my child's name in the long dashboard list?",
+    questionType: "guardian",
+    answer: "Above the student table on the dashboard, there is a search bar. Simply type your child's name or level code (like 'L2-A') and the table will instantly filter to show only that student's row."
   },
   {
     id: "offline",
-    keywords: ["offline", "no-internet", "internet", "wifi", "local-only", "independent", "remote-area"],
-    question: "Can I run this application offline?",
-    answer: "Yes! Because the platform is built with pure vanilla HTML, CSS, and JS with no external database servers or API dependencies, it runs completely offline. You can open `index.html` in any browser or launch it locally without internet connectivity, which is ideal for remote rural schools."
+    keywords: ["offline", "no-internet", "internet", "wifi", "local-only", "independent", "remote-area", "connection"],
+    question: "Can my children use this website if we don't have internet?",
+    questionType: "guardian",
+    answer: "Yes! Since the site is built on pure local code with no active database server requirements, you can download the files once and run it offline on any laptop or desktop, even in remote rural camps without cell service."
   },
   {
     id: "reset-db",
-    keywords: ["reset", "wipe", "clear", "restart", "refresh-database", "restore", "defaults"],
-    question: "How do I reset the dashboard database back to defaults?",
-    answer: "Simply refresh your browser page. Since student data is held in active browser JavaScript session memory, a page reload will wipe the newly added records and restore the original 8 default student profiles."
+    keywords: ["reset", "wipe", "clear", "restart", "refresh-database", "restore", "defaults", "clean"],
+    question: "How do I clean up the dashboard and start fresh?",
+    questionType: "guardian",
+    answer: "To start completely fresh and reload the default data, just refresh the webpage in your browser. All temporarily added profiles will be cleared, bringing back the default cohort of 8 mock students."
   },
   {
     id: "printing",
     keywords: ["print", "paper", "pdf-print", "hardcopy", "physical", "classroom"],
-    question: "Can these worksheets be printed for physical classrooms?",
-    answer: "Yes! Clicking on a worksheet card opens a details modal. Click the 'Download Practice Pack' button; in a production deployment, this compiles and prints a print-friendly PDF worksheet package ready for physical distribution to students without devices."
+    question: "Can I print these worksheets on paper so my child can write on them?",
+    questionType: "guardian",
+    answer: "Yes, definitely! Click on any worksheet card in the library to open the details modal. Then click the 'Download Practice Pack' button. This is structured to compile a clean, print-friendly PDF document that you can print out for physical pencil-and-paper study."
   },
   {
     id: "export",
-    keywords: ["export", "csv", "excel", "download-data", "backup", "reports"],
-    question: "Can I export student progress data to Excel or CSV?",
-    answer: "While the current frontend prototype is focused on live dashboard SVG visualizations and student tracking tables, an 'Export to CSV' utility can be easily added to the table actions row for backup. Currently, data resides in the active browser session."
+    keywords: ["export", "csv", "excel", "download-data", "backup", "reports", "download"],
+    question: "Can I download my child's progress report to my phone or computer?",
+    questionType: "guardian",
+    answer: "In this active version, you can click on 'Profile' next to any student's name on the dashboard to view their complete report card. You can take a screenshot or print the page to save their individualized progress timeline."
   },
   {
     id: "multiple-gaps",
-    keywords: ["multiple", "gaps", "several", "weaknesses", "many-gaps", "all-gaps"],
-    question: "What happens if a student has multiple skill gaps?",
-    answer: "The diagnostic evaluation isolates all failed topics across the test. When you save the student profile, all identified gaps are logged as a bulleted list. The student detail profile modal then displays all gaps and suggests targeted worksheets corresponding to each of those gaps."
+    keywords: ["multiple", "gaps", "several", "weaknesses", "many-gaps", "all-gaps", "lot"],
+    question: "What should I do if my child has a lot of skill gaps?",
+    questionType: "guardian",
+    answer: "Don't panic! It is very common for children to have several gaps. We recommend selecting just one foundational worksheet (starting with Literacy or basic Arithmetic) and letting them master that single topic first. Step-by-step progress works best!"
   },
   {
     id: "score-calculation",
     keywords: ["calculate", "score", "grades", "percentage", "how-scored", "evaluation-logic"],
-    question: "How does the platform calculate diagnostic scores?",
-    answer: "The diagnostic test consists of 4 questions. The scoring logic in `app.js` weights each correct answer. It calculates percentage benchmarks for Academics, Digital Literacy, and Communication skills, which then maps the student to an appropriate L1/L2/L3 letter band."
+    question: "How are my child's scores and percentages calculated?",
+    questionType: "guardian",
+    answer: "Each diagnostic test has 4 targeted questions. The percentage calculation divides the number of correct responses by 4, creating baseline averages across Academics, Digital, and Communication metrics."
   },
   {
     id: "perfect-score",
-    keywords: ["perfect", "100%", "all-correct", "high-score", "aced"],
-    question: "What happens if a student gets a perfect 100% score?",
-    answer: "If a student answers all diagnostic questions correctly, they are assigned the highest sub-level of their category (e.g. L1-C for Young Children, L2-C for Teenagers, L3-C for Young Adults) with an academic score of 100% and 'No active skill gaps detected'."
+    keywords: ["perfect", "100%", "all-correct", "high-score", "aced", "right"],
+    question: "What happens if my child gets every single answer right?",
+    questionType: "guardian",
+    answer: "That is wonderful! If they get 100% correct, the platform will place them in the highest sub-level of their category (like L1-C or L2-C). They will have a perfect score average and the system will report 'No active skill gaps detected'."
   },
   {
     id: "low-score",
-    keywords: ["low", "0%", "failed", "struggling", "poor-score", "remedial"],
-    question: "What happens if a student scores very low or 0%?",
-    answer: "The platform places them in the emergent sub-level (e.g., L1-A, L2-A, L3-A) and tags all assessment topics as critical skill gaps. This ensures educators are prompted with the most foundational worksheets to help remediate their conceptual blockages."
+    keywords: ["low", "0%", "failed", "struggling", "poor-score", "remedial", "quiz"],
+    question: "What if my child struggles and gets a low score on the quiz?",
+    questionType: "guardian",
+    answer: "That is perfectly okay! The test is simply diagnosing their needs. A low score places them in the foundational 'A' level (like L1-A) and highlights the specific questions they missed as skill gaps, unlocking basic lessons to support them."
   },
   {
     id: "custom-worksheets",
-    keywords: ["custom", "add-worksheet", "upload", "new-worksheet", "create-activity"],
-    question: "How do I add custom worksheets to the resources tab?",
-    answer: "You can expand the resource collection by opening [mockData.js](file:///c:/Users/Mohit/Desktop/Devlopment/Web%20Dev/Learnlevelai/mockData.js) and adding a new worksheet object to the `WORKSHEETS_DATA` array. Specify its title, category, subject, level code, estimated minutes, and tasks checklist."
+    keywords: ["custom", "add-worksheet", "upload", "new-worksheet", "create-activity", "own"],
+    question: "Can I add my own custom worksheets for my child to practice?",
+    questionType: "guardian",
+    answer: "Yes, you can extend the source code easily. Open the [mockData.js](file:///c:/Users/Mohit/Desktop/Devlopment/Web%20Dev/Learnlevelai/mockData.js) file and insert your custom text, questions, and duration directly into the `WORKSHEETS_DATA` array."
   },
   {
     id: "notifications",
-    keywords: ["notifications", "toasts", "alerts", "popups", "feedback-message"],
-    question: "Are there action notifications in the app?",
-    answer: "Yes, the app features a custom CSS toast notification system. Whenever you add a new student, delete a record, reset the assessment, or trigger a worksheet download, a modern glassmorphic toast notification slides in at the top right to confirm the action."
+    keywords: ["notifications", "toasts", "alerts", "popups", "feedback-message", "bubbles", "pop"],
+    question: "Why do these small colored bubbles pop up at the top right of the screen?",
+    questionType: "child",
+    answer: "Those are helper toast notifications! Whenever you save a student, finish a quiz, or download a worksheet, a little bubble pops up to tell you that your action succeeded. It's our way of letting you know everything went perfectly!"
   },
   {
     id: "accessibility",
-    keywords: ["accessibility", "contrast", "aria", "screen-reader", "accessible"],
-    question: "Is the website accessible for all users?",
-    answer: "Yes, the site uses semantic HTML5 tags (header, main, section, footer), high-contrast text color combinations, custom HSL theme scaling, explicit ARIA labels on all buttons and input boxes, and keyboard-tabbable interactive layouts."
+    keywords: ["accessibility", "contrast", "aria", "screen-reader", "accessible", "visual", "reading", "difficulties"],
+    question: "Can a child with visual or reading difficulties use this website easily?",
+    questionType: "guardian",
+    answer: "Yes! The site supports high contrast colors, keyboard navigation, and works with standard screen readers. Plus, the body text uses a highly readable, rounded font (Nunito) which is helpful for dyslexic and young readers."
   },
   {
     id: "change-details",
-    keywords: ["modify-student", "edit-profile", "change-age", "update-score", "rename"],
-    question: "Can I modify student details after adding them?",
-    answer: "In the current prototype, you can delete a student and re-add them with the correct parameters, or re-run their diagnostic assessment to save a new profile. Inline student editing is planned for a future release."
+    keywords: ["modify-student", "edit-profile", "change-age", "update-score", "rename", "typo", "fix"],
+    question: "How do I fix a typo in my child's name or age?",
+    questionType: "guardian",
+    answer: "In this initial version, if you make a spelling error, simply delete the profile using the red '✕' button on the dashboard table and add a new profile manually, or re-run the diagnostic assessment quiz with the correct name."
   },
   {
     id: "number-of-questions",
-    keywords: ["questions-count", "how-many-questions", "quiz-length", "test-duration"],
-    question: "How many questions are in each diagnostic test?",
-    answer: "Each category quiz (Child, Teenager, Young Adult) contains exactly 4 curated questions. This keeps the initial evaluation light, fast, and stress-free for learners, avoiding the anxiety of long academic testing sessions."
+    keywords: ["questions-count", "how-many-questions", "quiz-length", "test-duration", "tired", "long"],
+    question: "How long is the test? Will my child get tired?",
+    questionType: "guardian",
+    answer: "Not at all! The test has only 4 questions per cohort and takes about 5 minutes to complete. We deliberately made it short and encouraging so young learners stay excited and don't feel like they're taking a long school exam."
   },
   {
     id: "student-limit",
-    keywords: ["limit", "max-students", "capacity", "database-size", "storage-limit"],
-    question: "Is there a limit to how many students I can add?",
-    answer: "No, there is no technical limit to the number of students you can add in the active session memory. However, since the database is held in browser RAM, very large cohorts (thousands of records) might occupy memory until the page is refreshed."
+    keywords: ["limit", "max-students", "capacity", "database-size", "storage-limit", "neighborhood", "all"],
+    question: "Can I add all the kids in my neighborhood to this dashboard?",
+    questionType: "guardian",
+    answer: "Yes, you can! There is no limit to the number of students you can add to the active session. If you have 50 or 100 kids in your local learning camp, you can track all of them in the dashboard table simultaneously."
   },
   {
     id: "chart-interaction",
-    keywords: ["chart-click", "hover-chart", "interactive-graphs", "svg-interaction"],
-    question: "Are the dashboard charts interactive?",
-    answer: "Yes! Hovering over the custom SVG bar chart highlights specific subject bars. Hovering over the cohort donut chart highlights slices and reveals totals, and resizing your browser window automatically recalculates chart coordinates for fluid responsive rendering."
+    keywords: ["chart-click", "hover-chart", "interactive-graphs", "svg-interaction", "more", "information"],
+    question: "Can I click or hover on the colorful charts to see more information?",
+    questionType: "child",
+    answer: "Yes, you can! Hover your mouse cursor over any bar in the competency chart or tap on a slice of the donut chart. You'll see numbers and helper cards light up instantly to show you the exact count of students!"
   },
   {
     id: "literacy-track",
-    keywords: ["literacy", "reading", "spelling", "grammar", "english", "alphabet"],
-    question: "What is covered in the Literacy track?",
-    answer: "The Literacy track maps letter recognition (L1-A), phonics sounds and short words (L1-B), reading fluency and simple sentences (L1-C), up to advanced comprehension (L2-A) and critical analysis of complex texts (L2-C)."
+    keywords: ["literacy", "reading", "spelling", "grammar", "english", "alphabet", "write"],
+    question: "How will this website teach my child to read and write English?",
+    questionType: "guardian",
+    answer: "The English track starts with basic letter sounds and phonics (Level L1). It progresses to reading simple sentences and short stories (L1-C), understanding paragraphs (L2-A), and finally guides them to writing formal emails and resume cover letters (L3)."
   },
   {
     id: "numeracy-track",
-    keywords: ["numeracy", "math", "counting", "addition", "subtraction", "operations", "fractions", "spreadsheets"],
-    question: "What is covered in the Numeracy track?",
-    answer: "The Numeracy track spans single-digit counting and basic calculations (L1-A, L1-B), multi-digit mathematical operations (L2-A), fractions, percentages, and scientific concept logic (L2-B), up to digital office spreadsheets and formulas (L3-B)."
+    keywords: ["numeracy", "math", "counting", "addition", "subtraction", "operations", "fractions", "spreadsheets", "calculations"],
+    question: "How will this website help my kid with math and calculations?",
+    questionType: "guardian",
+    answer: "Our math track begins with counting to 10 (L1-A) and basic adding and subtracting (L1-B). As they move up, they study fractions and percentages (L2-B), logical career math (L2-C), and digital spreadsheet formulas (L3-B)."
   },
   {
     id: "employability-track",
-    keywords: ["employability", "cv", "resume", "interview", "job", "career", "professional"],
-    question: "What is covered in the Employability track?",
-    answer: "Designed for Young Adults (L3 levels), the Employability track covers verbal introductions and email settings (L3-A), collaborative office skills (L3-B), and job-seeking essentials like resume formatting, cover letter writing, and mock interview preparations (L3-C)."
+    keywords: ["employability", "cv", "resume", "interview", "job", "career", "professional", "teenager"],
+    question: "How does the young adult pathway help my teenager find a job?",
+    questionType: "guardian",
+    answer: "The Level 3 (L3) pathway is tailored for young adults. It walks them through building a modern professional resume (CV), composing formal cover letters, learning basic computer skills, and practicing mock job interviews."
   },
   {
     id: "font-choices",
-    keywords: ["fonts", "typography", "nunito", "outfit", "sans-serif"],
-    question: "What typography is used on the platform?",
-    answer: "We use two primary Google Fonts:\n1. **Outfit**: A geometric sans-serif with tight letter-spacing (`-0.025em` to `-0.04em`) used for premium, modern headings.\n2. **Nunito**: A soft, rounded sans-serif used for body text to keep the application feeling friendly and readable."
+    keywords: ["fonts", "typography", "nunito", "outfit", "sans-serif", "letters", "read", "screen"],
+    question: "Why are the letters on the screen so round and easy to read?",
+    questionType: "child",
+    answer: "We chose a font called **Nunito** for the body text, which has soft rounded corners. Studies show that rounded letters make reading less tiring for kids, helping them focus on spelling and math without eye strain!"
   },
   {
     id: "color-choices",
-    keywords: ["colors", "palette", "spruce", "sand", "terracotta", "mint", "blue", "indigo"],
-    question: "What color palette does LearnLevel AI use?",
-    answer: "The site utilizes a premium 'Spruce & Sand' palette:\n- **Light Mode**: Warm Sand/Oat backgrounds (`#FAF6F0`), deep Spruce green headers (`#1A3C34`), Terracotta accents (`#D96B43`), and soft Mint. \n- **Dark Mode**: Cozy obsidian-green forests (`#0E1F1A`) and luminous Emerald details for a cozy, organic, and friendly feel."
+    keywords: ["colors", "palette", "spruce", "sand", "terracotta", "mint", "blue", "indigo", "forest", "cozy"],
+    question: "Why is the website colored like a cozy green forest?",
+    questionType: "child",
+    answer: "We wanted the website to feel like a friendly, warm walk in the forest rather than a boring, cold school office! We used warm Sand colors for the background, deep Spruce greens for headers, and terracotta highlights to make it cozy."
   },
   {
     id: "mobile-nav",
-    keywords: ["mobile-menu", "hamburger", "scrolling-nav", "responsive-header"],
-    question: "Why doesn't the mobile site have a hamburger menu?",
-    answer: "To optimize accessibility and eliminate extra clicks, the mobile view features a horizontal-scrolling navigation header. Links are fully visible and swipeable on Row 2, enabling educators to switch pages with a single touch."
+    keywords: ["mobile-menu", "hamburger", "scrolling-nav", "responsive-header", "phone", "move"],
+    question: "How do I move around the website on my mobile phone?",
+    questionType: "guardian",
+    answer: "On your phone, there is no annoying hamburger menu button to click! The navigation bar sits at the top as a touch-friendly scrolling strip. You can easily swipe left and right with your finger and tap on any tab to change sections."
   },
   {
     id: "longitudinal-trend",
-    keywords: ["longitudinal", "trend-line", "growth-chart", "historical-progress"],
-    question: "What is the Longitudinal Trend chart?",
-    answer: "It is a custom SVG line graph on the Educator Dashboard (under the Growth Trajectory tab). It tracks the overall cohort average score over a six-month period, demonstrating learning improvements and longitudinal performance trends."
+    keywords: ["longitudinal", "trend-line", "growth-chart", "historical-progress", "wiggly"],
+    question: "What does the wiggly line chart on the dashboard show?",
+    questionType: "guardian",
+    answer: "Under the 'Growth Trajectory' tab on the dashboard, the line chart shows the historical average score of your entire class over the last six months. It helps you see how much your students are improving collectively over time."
   },
   {
     id: "student-profile-charts",
-    keywords: ["student-chart", "individual-trend", "profile-graph"],
-    question: "Does each student have a progress chart?",
-    answer: "Yes! When you click 'Profile' on any student's dashboard row, it opens a modal containing a personalized SVG area line chart showing that student's historical academic scoring milestones over time."
+    keywords: ["student-chart", "individual-trend", "profile-graph", "special"],
+    question: "Why does my child have their own special line chart in their profile?",
+    questionType: "guardian",
+    answer: "Each child has their own learning journey. When you click their dashboard profile, the individual line chart maps their personal score milestones over time, letting you celebrate their personal growth separate from the class average."
   },
   {
     id: "contributors",
-    keywords: ["contributors", "team", "who-made", "support", "help"],
-    question: "Who can I contact for help or contributing to the project?",
-    answer: "LearnLevel AI is open source and hosted on GitHub. You can contribute or report issues directly on the repository: `https://github.com/MohitPant2803/LevelLearnAi.git`. The primary developers are Mohit Pant and the Google DeepMind Antigravity coding agent."
+    keywords: ["contributors", "team", "who-made", "support", "help", "problem", "run"],
+    question: "Who can we ask for help if we run into a problem on this site?",
+    questionType: "guardian",
+    answer: "Since LearnLevel AI is an open-source project, you can visit our codebase page at `https://github.com/MohitPant2803/LevelLearnAi.git` and open a 'GitHub Issue' to ask for assistance. The project developers, Mohit Pant and Antigravity, check it regularly!"
+  },
+  {
+    id: "game-or-homework",
+    keywords: ["game", "homework", "fun", "scary", "puzzles", "play"],
+    question: "Is this a game or is it homework?",
+    questionType: "child",
+    answer: "Think of it as a fun learning game! You get to solve quick puzzles, find out what your level is, and download clean worksheets to practice. There are no scary red pens, no grades, and no tests to stress about!"
+  },
+  {
+    id: "get-stuck",
+    keywords: ["stuck", "hard", "help", "worksheet", "grow", "brain"],
+    question: "What should I do if I get stuck on a worksheet question?",
+    questionType: "child",
+    answer: "Don't worry at all! Getting stuck is the best way your brain grows stronger. If a question is too hard, you can ask your parent, helper, or teacher to check the 'Educator Notes' inside the worksheet view. They will help explain it!"
+  },
+  {
+    id: "certificate",
+    keywords: ["trophy", "certificate", "finish", "award", "win", "achievement"],
+    question: "Will I get a trophy or certificate when I finish a level?",
+    questionType: "child",
+    answer: "Yes! Every time you finish a worksheet pack or climb to the next level, you can celebrate with your tutor. Your profile will show your skills leveling up, just like getting a high score in your favorite video game!"
+  },
+  {
+    id: "device-compatibility",
+    keywords: ["device", "phone", "tablet", "mom", "smartphone", "play", "tap"],
+    question: "Can I play this on my mom's smartphone?",
+    questionType: "child",
+    answer: "Yes, you can! The website is designed to look beautiful and adjust to fit on any screen size. The buttons are big and round, and all tables slide cleanly, making it easy to tap and read on any mobile phone."
   }
 ];
