@@ -27,6 +27,14 @@ class LearnLevelApp {
     this.sunIcon = null;
     this.moonIcon = null;
     this.btnHeaderCta = null;
+
+    // Chatbot References
+    this.chatWidget = null;
+    this.chatToggleBtn = null;
+    this.chatPanel = null;
+    this.chatCloseBtn = null;
+    this.chatMessagesContainer = null;
+    this.chatInput = null;
   }
 
   init() {
@@ -43,6 +51,14 @@ class LearnLevelApp {
     this.sunIcon = this.themeToggleBtn.querySelector('.sun-icon');
     this.moonIcon = this.themeToggleBtn.querySelector('.moon-icon');
     this.btnHeaderCta = document.getElementById('btn-header-cta');
+
+    // Chatbot Elements Cache
+    this.chatWidget = document.getElementById('ask-ai-widget');
+    this.chatToggleBtn = document.getElementById('chat-toggle-btn');
+    this.chatPanel = document.getElementById('chat-panel-card');
+    this.chatCloseBtn = document.getElementById('chat-close-btn');
+    this.chatMessagesContainer = document.getElementById('chat-panel-messages');
+    this.chatInput = document.getElementById('chat-user-input');
 
     // Register Event Listeners
     this.registerEvents();
@@ -105,6 +121,10 @@ class LearnLevelApp {
         this.filterResourcesGrid();
       });
     });
+
+    // Chatbot Panel Toggles
+    this.chatToggleBtn.addEventListener('click', () => this.toggleChatPanel());
+    this.chatCloseBtn.addEventListener('click', () => this.toggleChatPanel());
   }
 
   // --- SPA ROUTING ENGINE ---
@@ -1202,6 +1222,111 @@ class LearnLevelApp {
         toast.remove();
       }, 500);
     }, 3500);
+  }
+
+  // --- ASK AI FLOATING CHATBOT ENGINE ---
+  toggleChatPanel() {
+    const isActive = this.chatPanel.classList.toggle('active');
+    
+    // Injects initial greeting if message log is clean
+    if (isActive && this.chatMessagesContainer.children.length === 0) {
+      this.appendChatBubble("Hi there! 👋 I am the LearnLevel AI Assistant. Ask me anything about our baseline diagnostics, learning levels (L1, L2, L3), progress dashboard, worksheets library, or installation steps!", "bot");
+    }
+  }
+
+  handleChatSubmit() {
+    const text = this.chatInput.value.trim();
+    if (!text) return;
+
+    // 1. Render User bubble
+    this.appendChatBubble(text, "user");
+    this.chatInput.value = '';
+
+    // 2. Play typing loading animation
+    const loadingId = this.showChatLoading();
+
+    // 3. Simulated AI processing time delay
+    setTimeout(() => {
+      // Remove loading indicator
+      this.removeChatLoading(loadingId);
+      
+      // Match query to DB and render bot response
+      const reply = this.findBestAnswer(text);
+      this.appendChatBubble(reply, "bot");
+    }, 900);
+  }
+
+  appendChatBubble(text, sender) {
+    const bubble = document.createElement('div');
+    bubble.className = `chat-bubble ${sender}-bubble`;
+    
+    // Replace newline formatting with standard break tags
+    const formattedText = text.replace(/\n/g, '<br>');
+    bubble.innerHTML = formattedText;
+    
+    this.chatMessagesContainer.appendChild(bubble);
+    this.scrollChatBottom();
+  }
+
+  showChatLoading() {
+    const id = `loading-${Date.now()}`;
+    const loadingBubble = document.createElement('div');
+    loadingBubble.className = `chat-bubble bot-bubble chat-loading-bubble`;
+    loadingBubble.id = id;
+    loadingBubble.innerHTML = `
+      <div class="typing-indicator">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    `;
+    this.chatMessagesContainer.appendChild(loadingBubble);
+    this.scrollChatBottom();
+    return id;
+  }
+
+  removeChatLoading(id) {
+    const el = document.getElementById(id);
+    if (el) el.remove();
+  }
+
+  scrollChatBottom() {
+    this.chatMessagesContainer.scrollTo({
+      top: this.chatMessagesContainer.scrollHeight,
+      behavior: 'smooth'
+    });
+  }
+
+  findBestAnswer(userQuery) {
+    // 1. Tokenize query: lowercase, strip punctuation, split into word tokens
+    const words = userQuery.toLowerCase()
+      .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g, "")
+      .split(/\s+/);
+
+    let bestMatch = null;
+    let highestScore = 0;
+
+    // 2. Intersect query words with Q&A database keywords
+    AI_QA_DATABASE.forEach(qa => {
+      let score = 0;
+      qa.keywords.forEach(keyword => {
+        if (words.includes(keyword)) {
+          score += 1;
+        }
+      });
+
+      // Tie-break or select highest score
+      if (score > highestScore) {
+        highestScore = score;
+        bestMatch = qa;
+      }
+    });
+
+    // 3. Return matching answer or default fallback
+    if (highestScore > 0 && bestMatch) {
+      return bestMatch.answer;
+    }
+    return "Please ask relevant questions to the website, such as about the diagnostic test, learning levels, worksheets, dashboard metrics, or platform installation.";
   }
 }
 
