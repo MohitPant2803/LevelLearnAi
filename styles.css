@@ -234,6 +234,21 @@ img {
   border-color: #ffffff;
 }
 
+.btn-danger {
+  background-color: var(--danger);
+  color: #ffffff;
+}
+
+.btn-danger:hover {
+  background-color: hsl(355, 75%, 45%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(217, 83, 79, 0.2);
+}
+
+.btn-danger:active {
+  transform: translateY(0);
+}
+
 .btn-block {
   display: flex;
   width: 100%;
@@ -2029,6 +2044,10 @@ img {
 
 .modal-card-large {
   max-width: 720px;
+}
+
+.modal-card-alert {
+  max-width: 420px;
 }
 
 .modal-overlay.active .modal-card {

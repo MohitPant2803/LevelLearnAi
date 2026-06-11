@@ -643,11 +643,17 @@ class LearnLevelApp {
   }
 
   deleteStudent(id) {
-    if (confirm('Are you sure you want to delete this student profile? This will update all class statistics.')) {
-      this.students = this.students.filter(s => s.id !== id);
-      this.renderDashboard();
-      this.showToast('Student profile deleted.', 'info');
-    }
+    this.showConfirm(
+      'Delete Learner Profile',
+      'Are you sure you want to delete this student profile? This will permanently remove their records and update all class statistics.',
+      'Delete',
+      true, // isDanger = true
+      () => {
+        this.students = this.students.filter(s => s.id !== id);
+        this.renderDashboard();
+        this.showToast('Student profile deleted.', 'info');
+      }
+    );
   }
 
   // --- SVG PROGRESS CHART ENGINE ---
@@ -1194,6 +1200,67 @@ class LearnLevelApp {
   // --- POPUP WINDOW DISMISSER (OVERLAYS) ---
   closeStudentDetailModal() {
     document.getElementById('student-detail-modal').classList.remove('active');
+  }
+
+  // --- AESTHETIC CUSTOM DIALOG SYSTEM (REPLACES CONFIRM/ALERT) ---
+  showConfirm(title, message, confirmText, isDanger, onConfirm) {
+    const modal = document.getElementById('confirm-modal');
+    const titleEl = document.getElementById('confirm-modal-title');
+    const msgEl = document.getElementById('confirm-modal-message');
+    const cancelBtn = document.getElementById('confirm-modal-cancel-btn');
+    const actionBtn = document.getElementById('confirm-modal-action-btn');
+
+    titleEl.textContent = title;
+    msgEl.textContent = message;
+    actionBtn.textContent = confirmText || 'Confirm';
+
+    // Set button style
+    actionBtn.className = isDanger ? 'btn btn-danger' : 'btn btn-primary';
+
+    // Replace the button node to clear previous event listeners cleanly
+    const newActionBtn = actionBtn.cloneNode(true);
+    actionBtn.parentNode.replaceChild(newActionBtn, actionBtn);
+
+    newActionBtn.addEventListener('click', () => {
+      onConfirm();
+      this.closeConfirmModal();
+    });
+
+    modal.classList.add('active');
+  }
+
+  showAlert(title, message, buttonText) {
+    const modal = document.getElementById('confirm-modal');
+    const titleEl = document.getElementById('confirm-modal-title');
+    const msgEl = document.getElementById('confirm-modal-message');
+    const cancelBtn = document.getElementById('confirm-modal-cancel-btn');
+    const actionBtn = document.getElementById('confirm-modal-action-btn');
+
+    titleEl.textContent = title;
+    msgEl.textContent = message;
+    actionBtn.textContent = buttonText || 'OK';
+    actionBtn.className = 'btn btn-primary';
+
+    if (cancelBtn) cancelBtn.style.display = 'none';
+
+    // Clear previous event listeners cleanly
+    const newActionBtn = actionBtn.cloneNode(true);
+    actionBtn.parentNode.replaceChild(newActionBtn, actionBtn);
+
+    newActionBtn.addEventListener('click', () => {
+      this.closeConfirmModal();
+    });
+
+    modal.classList.add('active');
+  }
+
+  closeConfirmModal() {
+    const modal = document.getElementById('confirm-modal');
+    modal.classList.remove('active');
+    
+    // Restore cancel button display rule
+    const cancelBtn = document.getElementById('confirm-modal-cancel-btn');
+    if (cancelBtn) cancelBtn.style.display = '';
   }
 
   // --- TOAST NOTIFICATIONS SYSTEM ---

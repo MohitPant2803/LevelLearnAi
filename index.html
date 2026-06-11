@@ -830,6 +830,23 @@
     </div>
   </div>
 
+  <!-- Modal 4: Aesthetic Custom Confirmation / Alert Modal -->
+  <div class="modal-overlay" id="confirm-modal">
+    <div class="modal-card modal-card-alert">
+      <div class="modal-header">
+        <h3 id="confirm-modal-title">Confirm Action</h3>
+        <button class="modal-close-btn" onclick="app.closeConfirmModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="confirm-modal-body" style="padding: 1.5rem 2rem;">
+        <p class="text-secondary" id="confirm-modal-message">Are you sure you want to perform this action?</p>
+      </div>
+      <div class="modal-footer" style="justify-content: flex-end; gap: 10px; padding: 1.25rem 2rem; border-top: 1px solid var(--border-color); display: flex;">
+        <button class="btn btn-outline" id="confirm-modal-cancel-btn" onclick="app.closeConfirmModal()">Cancel</button>
+        <button class="btn btn-danger" id="confirm-modal-action-btn">Confirm</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Toast Notification System -->
   <div class="toast-container" id="toast-container"></div>
 
