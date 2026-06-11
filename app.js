@@ -36,6 +36,7 @@ class LearnLevelApp {
     this.chatMessagesContainer = null;
     this.chatInput = null;
     this.lastMatchedQA = null;
+    this.argumentCount = 0;
   }
 
   init() {
@@ -1396,16 +1397,28 @@ class LearnLevelApp {
       .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g, "")
       .split(/\s+/);
 
-    // 3. Sarcastic redirects for rude words or insults
-    const rudeWords = ["stupid", "dumb", "idiot", "fool", "useless", "suck", "hate", "bad", "crap", "garbage", "trash", "rubbish", "shut", "annoying", "boring"];
-    const isRude = words.some(w => rudeWords.includes(w));
-    if (isRude) {
-      const rudeReplies = [
-        "Hey, play nice! 🤖 My virtual feelings are very fragile, and I'm just here to help kids learn math and reading. Let's start over!",
-        "Beep boop... sensing negativity. 🔌 I'm doing my best here! Let's focus on learning, levels, or math worksheets instead of name-calling.",
-        "I might be a virtual bot, but I still appreciate polite questions. How about we look at some fun L1-A reading activities instead?"
-      ];
-      return rudeReplies[Math.floor(Math.random() * rudeReplies.length)];
+    // 3. Stateful argument / rude detector
+    const rudeOrArguingWords = [
+      "stupid", "dumb", "idiot", "fool", "useless", "suck", "sucks", "hate", "bad", "crap",
+      "garbage", "trash", "rubbish", "shut", "annoying", "boring", "wrong", "lie", "liar",
+      "fake", "terrible", "worst", "stop", "nonsense", "no", "not", "silly", "ugly"
+    ];
+    const isRudeOrArguing = words.some(w => rudeOrArguingWords.includes(w));
+    if (isRudeOrArguing) {
+      this.argumentCount += 1;
+      
+      if (this.argumentCount === 1) {
+        return "Hey, play nice! 🤖 My virtual feelings are very fragile, and I'm just here to help kids learn math and reading. Let's start over!";
+      } else if (this.argumentCount === 2) {
+        return "Sensing a lot of tension here! 🔌 Maybe we should take a deep breath? I'm just a bundle of JavaScript code—arguing with me won't help you level up your skills!";
+      } else if (this.argumentCount === 3) {
+        return "Are we really in an argument? 🥊 I literally live inside a CSS stylesheet. My processor runs on electricity, but your anger is wasting human energy! Let's look at some Level 1-B worksheets to calm down.";
+      } else {
+        return "Okay, that's it! 🤐 I'm officially on strike. I refuse to help you until you say something nice or ask a real question about the website!";
+      }
+    } else {
+      // Reset argument counter if user speaks politely or asks a valid database question
+      this.argumentCount = 0;
     }
 
     // 4. Conversational follow-ups (Contextual Memory via Pronoun Check)
